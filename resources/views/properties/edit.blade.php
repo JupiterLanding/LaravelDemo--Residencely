@@ -1,5 +1,6 @@
 @extends("layouts.app")
 @section("content")
+    <x-alert></x-alert>
     <div class="p-5">
         <form action="{{ route('properties.update', $property->id) }}" method="POST">
             @method("PUT")
