@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UpdatePropertyRequest extends FormRequest
 {
@@ -11,9 +12,9 @@ class UpdatePropertyRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
-        return false;
+        return Auth::user()->email === "admin@residencely.net";
     }
 
     /**
@@ -21,10 +22,14 @@ class UpdatePropertyRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            //
+            "title" => "required|string|min:3",
+            "description" => "required",
+            "address" => "required",
+            "price" => "required|",
+            "sqft" => "required",
         ];
     }
 }

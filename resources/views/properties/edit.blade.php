@@ -1,7 +1,9 @@
 @extends("layouts.app")
 @section("content")
     <div class="p-5">
-        <form>
+        <form action="{{ route('properties.update', $property->id) }}" method="POST">
+            @method("PUT")
+            @csrf
             <h2>Edit Property</h2>
             <!-- 2 column grid layout with text inputs for the first and last names -->
             <div class="row mb-4">
@@ -40,7 +42,7 @@
 
             <div class="form-outline mb-4">
                 <label class="form-label" for="description">Description</label>
-            <textarea id="description" class="form-control">{{ $property->description }}</textarea>
+                <textarea id="description" class="form-control">{{ $property->description }}</textarea>
             </div>
 
             <button type="submit" class="btn btn-primary btn-block mb-4">

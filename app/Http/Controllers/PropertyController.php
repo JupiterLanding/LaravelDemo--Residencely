@@ -81,7 +81,11 @@ class PropertyController extends Controller
      */
     public function update(UpdatePropertyRequest $request, Property $property)
     {
-        //
+        $property->update([$request->all()]);
+
+        $property->save();
+
+        return redirect()->route("properties.show", ["property" => $property]);
     }
 
     /**

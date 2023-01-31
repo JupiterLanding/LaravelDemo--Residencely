@@ -33,7 +33,7 @@
                                 </td>
                                 <td>
                                     @foreach($property->images as $image)
-                                            <img height="75" width="75" class="img-thumbnail" src="{{ $image->path}}" alt="property image">
+                                            <img height="75" width="75" class="img-thumbnail" src="{{ asset("storage/" . $image->path) }}" alt="property image">
                                     @endforeach
 {{--                                    <img height="75" width="75" class="img-thumbnail" src="{{ $property->images->pluck("path")[0] }}" alt="property image">--}}
                                 </td>

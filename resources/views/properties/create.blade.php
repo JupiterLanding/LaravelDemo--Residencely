@@ -19,7 +19,7 @@
                         <label class="form-label" for="title">
                             Title
                         </label>
-                        <input name="title" type="text" id="title" class="form-control"/>
+                        <input name="title" type="text" id="title" class="form-control" value="{{ old('title') }}"/>
                     </div>
                 </div>
                 <div class="col">
@@ -27,7 +27,7 @@
                         <label class="form-label" for="price">
                             Price
                         </label>
-                        <input name="price" type="text" id="price" class="form-control"/>
+                        <input name="price" type="text" id="price" class="form-control" value="{{ old('price') }}"/>
                     </div>
                 </div>
                 <div class="col">
@@ -35,7 +35,7 @@
                         <label class="form-label" for="sqft">
                             sqft
                         </label>
-                        <input name="sqft" type="number" id="sqft" class="form-control"/>
+                        <input name="sqft" type="number" id="sqft" class="form-control" value="{{ old('sqft') }}"/>
                     </div>
                 </div>
             </div>
@@ -44,19 +44,19 @@
                 <label class="form-label" for="address">
                     Address
                 </label>
-                <input name="address" type="text" id="address" class="form-control"/>
+                <input name="address" type="text" id="address" class="form-control" value="{{ old('address') }}"/>
             </div>
 
             <div class="form-outline mb-4">
                 <label class="form-label" for="image">
                     Image
                 </label>
-                <input name="image" type="file" id="image" class="form-control"/>
+                <input name="image" type="file" id="image" class="form-control" value="{{ old('image') }}"/>
             </div>
 
             <div class="form-outline mb-4">
                 <label class="form-label" for="description">Description</label>
-                <textarea name="description" id="description" class="form-control"></textarea>
+                <textarea name="description" id="description" class="form-control">{{ old('description') }}</textarea>
             </div>
 
             <button type="submit" class="btn btn-primary btn-block mb-4">

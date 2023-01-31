@@ -14,7 +14,7 @@ class PropertyService
         $this->property = Property::create($request->all());
     }
 
-    public function uploadImage(Request $request)
+    public function uploadImage(Request $request): void
     {
         if ($request->hasFile("image")) {
             $path = $request->file("image")->store("images/properties");
