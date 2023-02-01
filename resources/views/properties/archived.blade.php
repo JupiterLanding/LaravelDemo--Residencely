@@ -5,7 +5,7 @@
     <div class="m-2">
         <div class="">
             <div class="card">
-                <div class="card-header">Properties</div>
+                <div class="card-header">Deleted Properties</div>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -20,8 +20,7 @@
                             <th scope="col">Address</th>
                             <th scope="col">Images</th>
                             <th scope="col">SQFT</th>
-                            <th scope="col">Info</th>
-                            <th scope="col">Delete</th>
+                            <th scope="col">Remove</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -34,23 +33,19 @@
                                 </td>
                                 <td>
                                     @foreach($property->images as $image)
-                                            <img height="75" width="75" class="img-thumbnail" src="{{ asset("storage/" . $image->path) }}" alt="property image">
+                                        <img height="75" width="75" class="img-thumbnail"
+                                             src="{{ asset("storage/" . $image->path) }}" alt="property image">
                                     @endforeach
-{{--                                    <img height="75" width="75" class="img-thumbnail" src="{{ $property->images->pluck("path")[0] }}" alt="property image">--}}
+                                    {{--                                    <img height="75" width="75" class="img-thumbnail" src="{{ $property->images->pluck("path")[0] }}" alt="property image">--}}
                                 </td>
                                 <td>
                                     {{ $property->sqft }}
                                 </td>
                                 <td>
-                                    <a href="{{ route('properties.show', $property->id)}}" class="btn btn-sm btn-primary">
-                                        View
-                                    </a>
-                                </td>
-                                <td>
                                     <form action="{{ route('properties.destroy', $property) }}" method="POST">
                                         @method("DELETE")
                                         @csrf
-                                        <button type="submit" class="btn btn-sm btn-danger">Delete index</button>
+                                        <button type="submit" class="btn btn-sm btn-danger">Delete lorem</button>
                                     </form>
                                 </td>
                             </tr>

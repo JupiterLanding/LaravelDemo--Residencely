@@ -20,7 +20,8 @@ return new class extends Migration {
             $table->unsignedBigInteger("property_id")->nullable();
             $table->foreign("property_id")
                 ->references("id")
-                ->on("properties");
+                ->on("properties")
+            ->onDelete("CASCADE");
         });
     }
 

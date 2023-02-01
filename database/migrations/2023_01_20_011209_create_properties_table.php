@@ -20,6 +20,7 @@ return new class extends Migration
             $table->mediumText("description");
             $table->bigInteger("sqft");
             $table->double("price", 9, 3);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

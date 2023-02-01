@@ -12,4 +12,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get("/archived-properties", [PropertyController::class, "archived"])->name("properties.archived");
+
 Route::resource("properties", PropertyController::class);
+

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePropertyRequest;
 use App\Http\Requests\UpdatePropertyRequest;
 use App\Models\Property;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 use App\Services\PropertyService;
 
@@ -36,7 +38,7 @@ class PropertyController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorePropertyRequest  $request
+     * @param StorePropertyRequest $request
      * @return Response
      */
     public function store(StorePropertyRequest $request, PropertyService $propertyService)
@@ -53,7 +55,7 @@ class PropertyController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Property  $property
+     * @param Property $property
      * @return View
      */
     public function show(Property $property): View
@@ -64,7 +66,7 @@ class PropertyController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Property  $property
+     * @param Property $property
      * @return View
      */
     public function edit(Property $property): View
@@ -75,8 +77,8 @@ class PropertyController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatePropertyRequest  $request
-     * @param  \App\Models\Property  $property
+     * @param \App\Http\Requests\UpdatePropertyRequest $request
+     * @param Property $property
      * @return Response
      */
     public function update(UpdatePropertyRequest $request, Property $property)
@@ -85,17 +87,44 @@ class PropertyController extends Controller
 
         $property->save();
 
+        $request->session()->flash("success", "Property updated successfully.");
+
         return redirect()->route("properties.show", ["property" => $property]);
+    }
+
+    /**
+     * View archived items.
+     *
+     * @param Property $property
+     * @return View
+     */
+    public function archived(Property $property): View
+    {
+//        $properties = Property::where("deleted_at", "!==", "NULL")->get();
+
+        $properties = Property::onlyTrashed()->get();
+
+        return view("properties.archived", ["properties" => $properties]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Property  $property
+     * @param Property $property
      * @return Response
      */
-    public function destroy(Property $property)
+    public function destroy(Request $request, $id)
     {
-        //
+        $property = Property::withTrashed()->where("id", $id)->first();
+
+        if ($property->trashed()) {
+            $property->forceDelete();
+            $request->session()->flash("success", "Property deleted successfully");
+            return redirect()->route("properties.archived");
+        } else {
+            $property->delete();
+            $request->session()->flash("success", "Property archived successfully");
+            return redirect()->route("properties.index");
+        }
     }
 }

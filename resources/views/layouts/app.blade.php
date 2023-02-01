@@ -84,11 +84,14 @@
             <a href="{{ route('properties.index') }}" class="list-group-item list-group-item-action active" aria-current="true">
                 Properties
             </a>
+            <a href="{{ route('properties.archived') }}" class="list-group-item list-group-item-action" aria-current="true">
+                Archived Properties
+            </a>
         </div>
         <div class="col-md-10">
-            @if(Session::get("success"))
+            @if(Session::has("success"))
                 <div class="alert alert-success m-2">
-                    {{ session()->get("success") }}
+                    {{ Session::get("success")}}
                 </div>
             @endif
             @yield('content')

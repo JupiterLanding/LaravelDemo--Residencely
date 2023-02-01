@@ -5,16 +5,16 @@
             <div class="col-md-8">
                 <div class="pb-3">
                     <a class="btn btn-primary mb-2" href="{{ route('properties.edit', $property->id) }}">Edit</a>
-                        <div class="card col-md-12">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    {{ $property->title }}
-                                </h5>
-                                <p class="card-text">
-                                    {{ $property->address }}
-                                </p>
-                            </div>
+                    <div class="card col-md-12">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                {{ $property->title }}
+                            </h5>
+                            <p class="card-text">
+                                {{ $property->address }}
+                            </p>
                         </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
@@ -28,9 +28,7 @@
                         </ul>
                     </div>
                     <div class="col-md-6">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis consectetur deserunt,
-                        doloremque, dolores error eveniet laudantium libero necessitatibus neque pariatur repellendus
-                        reprehenderit saepe unde veritatis voluptate! Laboriosam maiores modi nemo?
+                        {{ $property->description }}
                     </div>
                 </div>
             </div>
@@ -40,5 +38,15 @@
                 @endforeach
             </div>
         </div>
+    </div>
+    <div class="m-3">
+        <form action="{{ route('properties.destroy', $property->id) }}" method="POST">
+            @method("DELETE")
+            @csrf
+            <button type="submit" class="btn btn-sm btn-danger">Archive</button>
+        </form>
+    </div>
+    <div class="m-3">
+        <a class="" href="{{ route('properties.index') }}">Go back</a>
     </div>
 @endsection
