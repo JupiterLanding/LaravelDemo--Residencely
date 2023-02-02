@@ -18,8 +18,8 @@ class ImageFactory extends Factory
     public function definition(): array
     {
         return [
-            "property_id" => Property::all()->random()->id,
-            "path" => fake()->imageUrl($width = 400, $height = 400),
+            'property_id' => Property::all()->random()->id,
+            'path' => fake()->imageUrl($width = 400, $height = 400),
         ];
     }
 }

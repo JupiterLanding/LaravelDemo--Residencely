@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Services;
+
 use App\Models\Image;
 use App\Models\Property;
 use Illuminate\Http\Request;
@@ -16,13 +17,14 @@ class PropertyService
 
     public function uploadImage(Request $request): void
     {
-        if ($request->hasFile("image")) {
-            $path = $request->file("image")->store("images/properties");
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('images/properties');
             $this->property->images()->save(
-                Image::create(["path" => $path])
+                Image::create(['path' => $path])
             );
         }
     }
+
     public function createProperty(): Property
     {
         return $this->property;

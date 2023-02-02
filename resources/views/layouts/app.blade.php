@@ -81,19 +81,23 @@
     </nav>
     <main class="container d-flex">
         <div class="list-group col-md-2 pt-2">
-            <a href="{{ route('properties.index') }}" class="list-group-item list-group-item-action active" aria-current="true">
+            <a href="{{ route('properties.index') }}" class="list-group-item list-group-item-action" aria-current="true">
                 Properties
             </a>
-            <a href="{{ route('properties.archived') }}" class="list-group-item list-group-item-action" aria-current="true">
+            <a href="{{ route('properties.archived') }}"
+               class="list-group-item list-group-item-action "
+               aria-current="true">
                 Archived Properties
             </a>
         </div>
         <div class="col-md-10">
-            @if(Session::has("success"))
+
+            @if (Session::has("success"))
                 <div class="alert alert-success m-2">
-                    {{ Session::get("success")}}
+                    {{ Session::get("success") }}
                 </div>
             @endif
+
             @yield('content')
         </div>
     </main>

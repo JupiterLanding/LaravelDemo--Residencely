@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\PropertyController;
-
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -10,9 +9,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])
+    ->name('home')
+    ->middleware('auth');
 
-Route::get("/archived-properties", [PropertyController::class, "archived"])->name("properties.archived");
+Route::get('archived-properties', [PropertyController::class, 'archived'])->name('properties.archived');
 
-Route::resource("properties", PropertyController::class);
-
+Route::resource('properties', PropertyController::class);

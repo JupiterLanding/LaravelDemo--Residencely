@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                @foreach($property->images as $image)
+                @foreach ($property->images as $image)
                     <img class="img-thumbnail" src="{{ asset("storage/" . $image->path) }}" alt="property image">
                 @endforeach
             </div>

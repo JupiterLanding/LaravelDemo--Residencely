@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
 
 class StorePropertyRequest extends FormRequest
 {
@@ -14,7 +13,7 @@ class StorePropertyRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return Auth::check();
+        return auth()->check();
     }
 
     /**
@@ -25,11 +24,11 @@ class StorePropertyRequest extends FormRequest
     public function rules()
     {
         return [
-            "title" => "required|string|min:3",
-            "description" => "required",
-            "address" => "required",
-            "price" => "required|",
-            "sqft" => "required",
+            'title' => 'required|string|min:3',
+            'description' => 'required',
+            'address' => 'required',
+            'price' => 'required|',
+            'sqft' => 'required',
         ];
     }
 }

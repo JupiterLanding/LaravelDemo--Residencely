@@ -24,7 +24,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($properties as $property)
+                        @foreach ($properties as $property)
                             <tr>
                                 <th scope="row">{{ $property->id }}</th>
                                 <td>{{ $property->title }}</td>
@@ -32,7 +32,7 @@
                                     {{ $property->address }}
                                 </td>
                                 <td>
-                                    @foreach($property->images as $image)
+                                    @foreach ($property->images as $image)
                                         <img height="75" width="75" class="img-thumbnail"
                                              src="{{ asset("storage/" . $image->path) }}" alt="property image">
                                     @endforeach
