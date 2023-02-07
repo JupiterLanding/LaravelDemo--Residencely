@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('vouchers', function (Blueprint $table) {
             $table->id();
+            $table->string("code");
+            $table->integer("discount_percent");
+
+            $table->unsignedBigInteger("user_id");
+            $table->foreign("user_id")->references("id")->on("users");
+
             $table->timestamps();
         });
     }
