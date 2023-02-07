@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePropertyRequest;
 use App\Http\Requests\UpdatePropertyRequest;
+use App\Mail\PropertyCreated;
 use App\Models\Image;
 use App\Models\Property;
 use App\Services\PropertyService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 
 class PropertyController extends Controller
@@ -46,6 +48,8 @@ class PropertyController extends Controller
         $propertyService->uploadImage($request);
 
         $property = $propertyService->getProperty();
+
+        Mail::to("user@example.com")->send(new PropertyCreated($property));
 
         $request->session()->flash('success', 'Property created successfully.');
 
