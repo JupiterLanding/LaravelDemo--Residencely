@@ -37,6 +37,10 @@ class PropertyObserver
      */
     public function deleted(Property $property)
     {
+        foreach ($property->images as $image) {
+            $image->delete();
+        }
+
         Log::debug("Property Deleted: $property->name");
     }
 

@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Image;
 use App\Models\Property;
+use App\Observers\ImageObserver;
 use App\Observers\PropertyObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -30,6 +32,7 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         Property::observe(PropertyObserver::class);
+        Image::observe(ImageObserver::class);
     }
 
     /**

@@ -4,3 +4,5 @@
 <!--TODO:// Allow pictures to be edited and allow multiple images for one property. -->
 <!--TODO:// Add update functionality to the PropertyService -->
 <!--TODO:// Remove the creation of a property from the constructor -->
+<!--TODO:// Fix Image model, when image is created, it is then updated -->
+<!--TODO:// Make it so that a property can be restored with its associated images. -->
