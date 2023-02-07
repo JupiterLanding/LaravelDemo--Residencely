@@ -27,7 +27,8 @@ class UpdatePropertyRequest extends FormRequest
             'title' => 'required|string|min:3',
             'description' => 'required',
             'address' => 'required',
-            'price' => 'required|',
+            'image' => 'nullable|image|mimes:jpeg,jpg,png,gif',
+            'price' => 'required',
             'sqft' => 'required',
         ];
     }

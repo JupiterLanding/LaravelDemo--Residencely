@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePropertyRequest;
 use App\Http\Requests\UpdatePropertyRequest;
+use App\Models\Image;
 use App\Models\Property;
 use App\Services\PropertyService;
 use Illuminate\Http\Request;
@@ -44,7 +45,7 @@ class PropertyController extends Controller
     {
         $propertyService->uploadImage($request);
 
-        $property = $propertyService->createProperty();
+        $property = $propertyService->getProperty();
 
         $request->session()->flash('success', 'Property created successfully.');
 
@@ -80,16 +81,15 @@ class PropertyController extends Controller
      * @param  Property  $property
      * @return Response
      */
-    public function update(UpdatePropertyRequest $request, Property $property)
+    public function update(UpdatePropertyRequest $request, Property $property, PropertyService $propertyService)
     {
-        $property->update($request->all());
-
-        $property->save();
+        $propertyService->updateProperty($request, $property);
 
         $request->session()->flash('success', 'Property updated successfully.');
 
         return redirect()->route('properties.show', ['property' => $property]);
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -122,7 +122,7 @@ class PropertyController extends Controller
      */
     public function archived(Property $property): View
     {
-//        $properties = Property::where("deleted_at", "!==", "NULL")->get();
+        //        $properties = Property::where("deleted_at", "!==", "NULL")->get();
 
         $properties = Property::onlyTrashed()->get();
 

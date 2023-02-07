@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 
 class PropertyService
 {
-    public $property;
+    public Property $property;
+
+    public Property $updatedProperty;
 
     public function __construct(Request $request)
     {
@@ -25,8 +27,24 @@ class PropertyService
         }
     }
 
-    public function createProperty(): Property
+    public function getProperty(): Property
     {
         return $this->property;
+    }
+
+    public function updateProperty(Request $request, Property $property): Property
+    {
+        $property->update($request->all());
+
+        if ($request->hasFile("image")) {
+            $path = $request->file("image")->store("images/properties");
+            $property->images()->save(
+                Image::create(["path" => $path])
+            );
+        }
+
+        $property->save();
+
+        return $property;
     }
 }

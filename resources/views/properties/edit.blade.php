@@ -2,7 +2,7 @@
 @section("content")
     <x-alert></x-alert>
     <div class="p-5">
-        <form action="{{ route('properties.update', $property->id) }}" method="POST">
+        <form action="{{ route('properties.update', $property->id) }}" method="POST" enctype="multipart/form-data">
             @method("PUT")
             @csrf
             <h2>Edit Property</h2>
@@ -14,7 +14,7 @@
                             Title
                         </label>
                         <input name="title" type="text" id="title" class="form-control"
-                               value="{{ $property->title }}"/>
+                        value="{{ $property->title }}"/>
                     </div>
                 </div>
                 <div class="col">
@@ -44,11 +44,18 @@
                 <input name="address" type="text" id="address" class="form-control"
                        value="{{ $property->address }}"/>
             </div>
+            
+            <div class="form-outline mb-4">
+                <label class="form-label" for="image">
+                    Image
+                </label>
+                <input name="image" type="file" id="image" class="form-control" value="{{ old('image') }}"/>
+            </div>
 
             <div class="form-outline mb-4">
                 <label class="form-label" for="description">Description</label>
                 <textarea name="description" id="description"
-                          class="form-control">{{ $property->description }}</textarea>
+                class="form-control">{{ $property->description }}</textarea>
             </div>
 
             <button type="submit" class="btn btn-primary btn-block mb-4">

@@ -79,7 +79,7 @@
             </div>
         </div>
     </nav>
-    <main class="container d-flex">
+    <main class="container d-md-flex">
         <div class="list-group col-md-2 pt-2">
             <a href="{{ route('properties.index') }}" class="list-group-item list-group-item-action" aria-current="true">
                 Properties
