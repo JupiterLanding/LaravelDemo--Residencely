@@ -45,7 +45,7 @@
                                     <form action="{{ route('properties.destroy', $property) }}" method="POST">
                                         @method("DELETE")
                                         @csrf
-                                        <button type="submit" class="btn btn-sm btn-danger">Delete lorem</button>
+                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                                     </form>
                                 </td>
                             </tr>

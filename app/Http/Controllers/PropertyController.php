@@ -81,9 +81,18 @@ class PropertyController extends Controller
      * @param  Property  $property
      * @return Response
      */
-    public function update(UpdatePropertyRequest $request, Property $property, PropertyService $propertyService)
+    public function update(UpdatePropertyRequest $request, Property $property)
     {
-        $propertyService->updateProperty($request, $property);
+        $property->update($request->all());
+
+        if ($request->hasFile("image")) {
+            $path = $request->file("image")->store("images/properties");
+            $property->images()->save(
+                Image::create(["path" => $path])
+            );
+        }
+
+        $property->save();
 
         $request->session()->flash('success', 'Property updated successfully.');
 
@@ -122,8 +131,6 @@ class PropertyController extends Controller
      */
     public function archived(Property $property): View
     {
-        //        $properties = Property::where("deleted_at", "!==", "NULL")->get();
-
         $properties = Property::onlyTrashed()->get();
 
         return view('properties.archived', ['properties' => $properties]);
