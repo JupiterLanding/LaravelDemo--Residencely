@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PropertyController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,5 +15,9 @@ Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])
     ->middleware('auth');
 
 Route::get('archived-properties', [PropertyController::class, 'archived'])->name('properties.archived');
+
+Route::put("properties/{id}/restore", [PropertyController::class, "restore"])->name("properties.restore");
+
+Route::resource("images", ImageController::class);
 
 Route::resource('properties', PropertyController::class);

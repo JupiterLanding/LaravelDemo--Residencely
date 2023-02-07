@@ -135,4 +135,13 @@ class PropertyController extends Controller
 
         return view('properties.archived', ['properties' => $properties]);
     }
+
+    public function restore($id)
+    {
+        Property::withTrashed()->find($id)->restore();
+
+        request()->session()->flash('success', 'Property restored successfully.');
+
+        return redirect()->route("properties.index");
+    }
 }

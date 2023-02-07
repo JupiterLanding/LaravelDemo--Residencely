@@ -20,6 +20,8 @@
                             <th scope="col">Address</th>
                             <th scope="col">Images</th>
                             <th scope="col">SQFT</th>
+                            <th scope="col"></th>
+                            <th scope="col">Restore</th>
                             <th scope="col">Remove</th>
                         </tr>
                         </thead>
@@ -40,6 +42,15 @@
                                 </td>
                                 <td>
                                     {{ $property->sqft }}
+                                </td>
+                                <td>
+                                <td>
+                                    <form action="{{ route('properties.restore', $property->id) }}" method="POST">
+                                        @method("PUT")
+                                        @csrf
+                                        <button type="submit" class="btn btn-sm btn-info text-white">Restore</button>
+                                    </form>
+                                </td>
                                 </td>
                                 <td>
                                     <form action="{{ route('properties.destroy', $property) }}" method="POST">

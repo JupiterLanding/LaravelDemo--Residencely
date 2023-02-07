@@ -2,6 +2,20 @@
 @section("content")
     <x-alert></x-alert>
     <div class="p-5">
+        <div class="row p-5">
+            @foreach ($property->images as $image)
+            <div class="col-lg-4 col-md-4 col-xs-4 thumb">
+                <a class="thumbnail" href="#">
+                    <img class="img-responsive" src="{{ asset("storage/" . $image->path)}}" alt="Property image">
+                    <form  class="m-2" action="{{ route('images.destroy', $image->id) }}" method="POST">
+                        @method("DELETE")
+                        @csrf
+                        <button class="btn btn-danger btn-block">Delete</button>
+                    </form>
+                </a>
+            </div>
+            @endforeach
+        </div>
         <form action="{{ route('properties.update', $property->id) }}" method="POST" enctype="multipart/form-data">
             @method("PUT")
             @csrf

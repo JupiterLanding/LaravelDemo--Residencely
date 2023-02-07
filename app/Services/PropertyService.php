@@ -32,19 +32,8 @@ class PropertyService
         return $this->property;
     }
 
-    public function updateProperty(Request $request, Property $property): Property
-    {
-        $property->update($request->all());
+    // public function updateProperty(Request $request, Property $property): Property
+    // {
 
-        if ($request->hasFile("image")) {
-            $path = $request->file("image")->store("images/properties");
-            $property->images()->save(
-                Image::create(["path" => $path])
-            );
-        }
-
-        $property->save();
-
-        return $property;
-    }
+    // }
 }

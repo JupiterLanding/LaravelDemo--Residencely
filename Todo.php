@@ -2,5 +2,5 @@
 <!--TODO:// Create show page for properties: Complete -->
 <!--TODO:// Delete pictures with property-->
 <!--TODO:// Allow pictures to be edited and allow multiple images for one property. -->
-<!--TODO:// Complete update method on PropertyController -->
-<!--TODO:// Complete update method on PropertyController -->
+<!--TODO:// Add update functionality to the PropertyService -->
+<!--TODO:// Remove the creation of a property from the constructor -->
