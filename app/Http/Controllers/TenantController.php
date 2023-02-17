@@ -15,7 +15,9 @@ class TenantController extends Controller
      */
     public function index()
     {
-        //
+        $tenants = Tenant::orderBy('created_at', 'DESC')->get();
+
+        return view('tenants.index', ['tenants' => $tenants]);
     }
 
     /**

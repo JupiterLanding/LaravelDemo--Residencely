@@ -86,6 +86,9 @@
             <a href="{{ route('properties.index') }}" class="list-group-item list-group-item-action" aria-current="true">
                 Properties
             </a>
+            <a href="{{ route('tenants.index') }}" class="list-group-item list-group-item-action" aria-current="true">
+                Tenants
+            </a>
             <a href="{{ route('properties.archived') }}"
                class="list-group-item list-group-item-action "
                aria-current="true">

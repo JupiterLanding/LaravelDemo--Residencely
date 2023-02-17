@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\TenantController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,6 +26,8 @@ Route::put("properties/{id}/restore", [PropertyController::class, "restore"])->n
 Route::resource("images", ImageController::class);
 
 Route::resource('properties', PropertyController::class);
+
+Route::resource('tenants', TenantController::class);
 
 Route::get("users/profile", [UserController::class, "profile"])->name("users.profile");
 

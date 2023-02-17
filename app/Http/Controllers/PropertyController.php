@@ -49,8 +49,6 @@ class PropertyController extends Controller
 
         $property = $propertyService->getProperty();
 
-        Mail::to("user@example.com")->send(new PropertyCreated($property));
-
         $request->session()->flash('success', 'Property created successfully.');
 
         return redirect()->route('properties.show', ['property' => $property]);

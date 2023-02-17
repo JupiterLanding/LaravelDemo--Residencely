@@ -3,7 +3,9 @@
 namespace App\Observers;
 
 use App\Models\Property;
+use App\Mail\PropertyCreated;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class PropertyObserver
 {
@@ -15,7 +17,7 @@ class PropertyObserver
      */
     public function created(Property $property)
     {
-        Log::debug("Property Created: $property->name");
+        Mail::to("user@example.com")->send(new PropertyCreated($property));
     }
 
     /**
