@@ -26,8 +26,10 @@ Route::resource("images", ImageController::class);
 
 Route::resource('properties', PropertyController::class);
 
-Route::get("/profile", function () {
-    return view("profile");
-})->name("users.profile");
+Route::get("users/profile", [UserController::class, "profile"])->name("users.profile");
+
+Route::get("users/vouchers", [UserController::class, "vouchers"])->name("users.vouchers");
+
+Route::get("users/messages", [UserController::class, "messages"])->name("users.messages");
 
 Route::put("/users", [UserController::class, "updateUser"])->name("users.update");

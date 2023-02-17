@@ -51,12 +51,16 @@ class User extends Authenticatable
     protected static function booted()
     {
         static::created(function () {
-            dd("Created");
         });
     }
 
     public function vouchers(): HasMany
     {
         return $this->hasMany(Voucher::class);
+    }
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
     }
 }

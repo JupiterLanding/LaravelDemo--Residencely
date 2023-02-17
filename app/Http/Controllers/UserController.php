@@ -14,4 +14,20 @@ class UserController extends Controller
 
         return redirect()->route("users.profile")->with("user", $user);
     }
+
+
+    public function profile()
+    {
+        return view("profile");
+    }
+
+    public function messages()
+    {
+        return view("users.messages");
+    }
+
+    public function vouchers()
+    {
+        return view("users.vouchers");
+    }
 }

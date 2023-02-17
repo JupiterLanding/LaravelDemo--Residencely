@@ -1,23 +1,7 @@
 @extends('layouts.app')
-
 @section('content')
-<div class="m-5">
-<ul class="nav">
-  <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#">Disabled</a>
-  </li>
-</ul>
-</div>
-<div class="m-5">
+<x-user-profile-navigation></x-user-profile-navigation>
+<div class="m-3">
     <form method="POST" action="{{ route('users.update') }}">
         @csrf
         @method("PUT")
