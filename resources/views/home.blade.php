@@ -11,12 +11,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <p class="lead">Welcome to your dashboard {{ auth()->user()->name }}!</p>
-                    @if (auth()->user()->vouchers)
-                        @foreach (auth()->user()->vouchers as $voucher)
-                            You have a voucher: <span class="text-success">{{ $voucher->code }}</span>
-                        @endforeach
-                    @endif
+                    <p>Welcome to your dashboard {{ auth()->user()->name }}!</p>
                 </div>
             </div>
         </div>

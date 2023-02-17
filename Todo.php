@@ -8,4 +8,3 @@
 <!--TODO:// Make it so that a property can be restored with its associated images. -->
 <!--TODO:// Send voucher with welcome email. New users. -->
 <!--TODO:// Create CRUD functionality for Tenant resource. -->
-<!--TODO:// Create user profile and settings view. -->

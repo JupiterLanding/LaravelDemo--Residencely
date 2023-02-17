@@ -1,13 +1,13 @@
 <x-mail::message>
 # New Property Created
 
-Price: {{ $property->price }} <br>
+Price: ${{ number_format($property->price, 2) }} <br>
 Name: {{ $property->title }} <br>
 Description: {{ $property->description }} <br>
 
 
 <x-mail::button :url="''">
-Button Text
+    View Property
 </x-mail::button>
 
 Thanks,<br>
