@@ -31,9 +31,4 @@ class PropertyService
     {
         return $this->property;
     }
-
-    // public function updateProperty(Request $request, Property $property): Property
-    // {
-
-    // }
 }

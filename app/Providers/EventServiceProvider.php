@@ -3,13 +3,15 @@
 namespace App\Providers;
 
 use App\Models\Image;
+use App\Models\User;
 use App\Models\Property;
+use App\Observers\UserObserver;
 use App\Observers\ImageObserver;
 use App\Observers\PropertyObserver;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Event;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -33,6 +35,7 @@ class EventServiceProvider extends ServiceProvider
     {
         Property::observe(PropertyObserver::class);
         Image::observe(ImageObserver::class);
+        User::observe(UserObserver::class);
     }
 
     /**

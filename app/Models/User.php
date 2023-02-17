@@ -45,6 +45,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * An alternative to model observers.
+     */
     protected static function booted()
     {
         static::created(function () {
